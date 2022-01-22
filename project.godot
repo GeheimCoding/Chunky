@@ -13,6 +13,10 @@ config_version=4
 config/name="Chunky"
 config/icon="res://icon.png"
 
+[autoload]
+
+ChunkyCache="*res://addons/chunky/cache.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/chunky/plugin.cfg" )

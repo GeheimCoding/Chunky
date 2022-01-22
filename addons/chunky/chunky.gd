@@ -3,8 +3,8 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	pass
+	add_autoload_singleton("ChunkyCache", "res://addons/chunky/cache.gd")
 
 
 func _exit_tree():
-	pass
+	remove_autoload_singleton("ChunkyCache")
