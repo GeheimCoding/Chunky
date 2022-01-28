@@ -7,19 +7,20 @@ var file_system_dock: FileSystemDock
 var tab_utils: TabUtils = load('res://addons/chunky/utils/tab_utils.gd').new()
 
 var initialized := false
+var log_utils: LogUtils = load('res://addons/chunky/utils/log_utils.gd').new()
 
 
-func init(root: Node):
+func init(root: Node) -> void:
 	# this method is called in every _process call of cache, so return early
 	# if this script was already initialized
 	if initialized:
 		return
 	init_editor(root)
 	initialized = true
-	print('editor_utils initialized')
+	log_utils.debug('editor_utils initialized')
 
 
-func init_editor(root: Node):
+func init_editor(root: Node) -> void:
 	tab_utils.init(root)
 	find_nodes_recursive(root)
 
@@ -40,7 +41,7 @@ func find_nodes_recursive(node: Node) -> void:
 		find_nodes_recursive(child)
 
 
-func update(root: Node):
+func update(root: Node) -> void:
 	# cache passes everything for init along in the update method, so that when
 	# saving this script (which resets everything), it is still initialized!
 	init(root)

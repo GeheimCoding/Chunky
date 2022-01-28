@@ -8,19 +8,20 @@ var tab_count := 0
 var tab_title := ''
 
 var initialized := false
+var log_utils: LogUtils = load('res://addons/chunky/utils/log_utils.gd').new()
 
 
-func init(root: Node):
+func init(root: Node) -> void:
 	# this method is called in every _process call of cache, so return early
 	# if this script was already initialized
 	if initialized:
 		return
 	find_tabs(root)
 	initialized = true
-	print('tab_utils initialized')
+	log_utils.debug('tab_utils initialized')
 
 
-func find_tabs(root: Node):
+func find_tabs(root: Node) -> void:
 	find_tabs_recursive(root)
 
 
@@ -39,14 +40,14 @@ func find_tabs_recursive(node: Node) -> void:
 		find_tabs_recursive(child)
 
 
-func update(root: Node):
+func update(root: Node) -> void:
 	# cache passes everything for init along in the update method, so that when
 	# saving this script (which resets everything), it is still initialized!
 	init(root)
 	
-	var current_tab_idx = tabs.current_tab
-	var current_tab_count = tabs.get_tab_count()
-	var current_tab_title = tabs.get_tab_title(current_tab_idx)
+	var current_tab_idx := tabs.current_tab
+	var current_tab_count := tabs.get_tab_count()
+	var current_tab_title := tabs.get_tab_title(current_tab_idx)
 	var current_tabs := []
 	for tab_idx in range(current_tab_count):
 		current_tabs.append(tabs.get_tab_title(tab_idx))
@@ -69,13 +70,13 @@ func update(root: Node):
 	tab_title = current_tab_title
 
 
-func handle_opened_tabs(current_tabs: PoolStringArray):
+func handle_opened_tabs(current_tabs: PoolStringArray) -> void:
 	pass
 
 
-func handle_current_tab(current_tab_idx: int, current_tab_title: String):
+func handle_current_tab(current_tab_idx: int, current_tab_title: String) -> void:
 	pass
 
 
-func handle_closed_tabs(current_tabs: PoolStringArray, current_tab_title: String):
+func handle_closed_tabs(current_tabs: PoolStringArray, current_tab_title: String) -> void:
 	pass
