@@ -8,9 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Cache",
+"language": "GDScript",
+"path": "res://addons/chunky/cache.gd"
+}, {
+"base": "Node",
+"class": "EditorUtils",
+"language": "GDScript",
+"path": "res://addons/chunky/utils/editor_utils.gd"
+}, {
+"base": "Node",
+"class": "TabUtils",
+"language": "GDScript",
+"path": "res://addons/chunky/utils/tab_utils.gd"
+} ]
+_global_script_class_icons={
+"Cache": "",
+"EditorUtils": "",
+"TabUtils": ""
+}
+
 [application]
 
 config/name="Chunky"
+run/main_scene="res://editor_playground.tscn"
 config/icon="res://icon.png"
 
 [autoload]
