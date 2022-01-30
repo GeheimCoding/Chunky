@@ -10,19 +10,19 @@ var initialized := false
 var log_utils: LogUtils = load('res://addons/chunky/utils/log_utils.gd').new()
 
 
-func init(root: Node) -> void:
+func init(init_data: InitData) -> void:
 	# this method is called in every _process call of cache, so return early
 	# if this script was already initialized
 	if initialized:
 		return
-	init_editor(root)
+	init_editor(init_data)
 	initialized = true
-	log_utils.debug('editor_utils initialized')
+	log_utils.debug('editor_utils.gd initialized')
 
 
-func init_editor(root: Node) -> void:
-	tab_utils.init(root)
-	find_nodes_recursive(root)
+func init_editor(init_data: InitData) -> void:
+	tab_utils.init(init_data)
+	find_nodes_recursive(init_data.root)
 
 
 func find_nodes_recursive(node: Node) -> void:
@@ -41,9 +41,8 @@ func find_nodes_recursive(node: Node) -> void:
 		find_nodes_recursive(child)
 
 
-func update(root: Node) -> void:
+func update(init_data: InitData) -> void:
 	# cache passes everything for init along in the update method, so that when
 	# saving this script (which resets everything), it is still initialized!
-	init(root)
-	
-	tab_utils.update(root)
+	init(init_data)
+	tab_utils.update(init_data)

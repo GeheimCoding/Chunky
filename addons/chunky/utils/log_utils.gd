@@ -33,10 +33,16 @@ func print_args(needed_log_level: int, args) -> void:
 
 func prepare_message(args) -> String:
 	# the different log methods can also be called with a single argument
-	if typeof(args) != TYPE_ARRAY:
-		args = [args]
+	if not is_array(args):
+		return str(args)
 	
 	var message := ''
 	for arg in args:
 		message += str(arg)
 	return message
+
+
+func is_array(args) -> bool:
+	var type := typeof(args)
+	# check enum Variant.Type: all array types are consecutive
+	return type >= TYPE_ARRAY and type <= TYPE_COLOR_ARRAY

@@ -12,12 +12,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Cache",
 "language": "GDScript",
-"path": "res://addons/chunky/cache.gd"
+"path": "res://addons/chunky/domain/cache.gd"
+}, {
+"base": "Node",
+"class": "Chunky",
+"language": "GDScript",
+"path": "res://addons/chunky/chunky.gd"
 }, {
 "base": "Node",
 "class": "EditorUtils",
 "language": "GDScript",
 "path": "res://addons/chunky/utils/editor_utils.gd"
+}, {
+"base": "Node",
+"class": "InitData",
+"language": "GDScript",
+"path": "res://addons/chunky/domain/init_data.gd"
 }, {
 "base": "Node",
 "class": "LogUtils",
@@ -31,7 +41,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Cache": "",
+"Chunky": "",
 "EditorUtils": "",
+"InitData": "",
 "LogUtils": "",
 "TabUtils": ""
 }
@@ -44,7 +56,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-ChunkyCache="*res://addons/chunky/cache.gd"
+ChunkyAutoload="*res://addons/chunky/chunky.gd"
 
 [editor_plugins]
 
